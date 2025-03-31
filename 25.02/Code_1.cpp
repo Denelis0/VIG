@@ -31,7 +31,7 @@ int main() {
     imshow("Lab", image_lab);              // Lab
     imshow("YUV", image_yuv);              // YUV
     imshow("XYZ", image_xyz);              // XYZ
-    imshow("Grayscale", image_gray);       // Grayscale
+    imshow("Grayscale", image_gray);       // Gray
     waitKey(0);
 
     return 0;
