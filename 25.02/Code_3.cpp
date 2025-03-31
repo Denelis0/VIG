@@ -43,8 +43,8 @@ int main() {
         cv::circle(circleImage, center, 3, cv::Scalar(0, 255, 0), -1, cv::LINE_AA); 
         cv::circle(circleImage, center, radius, cv::Scalar(255, 0, 0), 2, cv::LINE_AA); 
     }
-    cv::imshow("Detected Lines", lineImage);
-    cv::imshow("Detected Circles", circleImage);
+    cv::imshow("Линии", lineImage);
+    cv::imshow("Круги", circleImage);
     cv::waitKey(0);
     return 0;
 }
