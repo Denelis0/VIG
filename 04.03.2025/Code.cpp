@@ -34,7 +34,7 @@ std::string identifyShape(const std::vector<cv::Point>& contour) {
 }
 
 int main() {
-  
+
     std::string imagePath = "D:/CV/Tue1/Form.jpg";
     Mat originalImage = imread(imagePath, IMREAD_COLOR);
     if (originalImage.empty()) {
@@ -48,7 +48,7 @@ int main() {
     cv::Mat blurredImage;
     cv::GaussianBlur(grayscaleImage, blurredImage, cv::Size(9, 9), 1.5);
 
-    //Поиск границ с помощью алгоритма Кэнни
+    // Поиск границ с помощью алгоритма Кэнни
     cv::Mat edgeImage;
     cv::Canny(blurredImage, edgeImage, 10, 50);
 
@@ -63,8 +63,8 @@ int main() {
         // Определение формы контура
         std::string detectedShape = identifyShape(shapeContours[i]);
 
-        // Отрисовка контура
-        cv::drawContours(contourImage, shapeContours, static_cast<int>(i), cv::Scalar(0, 255, 0), 2);
+        // Отрисовка контура синим цветом (BGR: (255, 0, 0))
+        cv::drawContours(contourImage, shapeContours, static_cast<int>(i), cv::Scalar(255, 0, 0), 2);
 
         // Вычисление центра массы контура
         cv::Moments contourMoments = cv::moments(shapeContours[i]);
@@ -72,8 +72,8 @@ int main() {
             int centerX = static_cast<int>(contourMoments.m10 / contourMoments.m00);
             int centerY = static_cast<int>(contourMoments.m01 / contourMoments.m00);
 
-            // Вывод текста с названием формы
-            cv::putText(contourImage, detectedShape, cv::Point(centerX - 25, centerY), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(200, 100, 0), 2);
+            // Вывод текста с названием формы розовым цветом (BGR: (255, 0, 255))
+            cv::putText(contourImage, detectedShape, cv::Point(centerX - 25, centerY), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 0, 255), 2);
         }
     }
 
@@ -81,4 +81,3 @@ int main() {
     cv::waitKey(0);
     return 0;
 }
-
